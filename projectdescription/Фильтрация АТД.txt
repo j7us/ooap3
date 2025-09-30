@@ -1,0 +1,42 @@
+FieldKeeper
+Класс остается
+
+FieldValidator
+Класс удален, т.к инкапсулирует функцию.
+
+FieldWinningCombinationProcessor
+Класс удален, т.к инкапсулирует функцию.
+
+FieldGenerator
+Класс удален, т.к инкапсулирует функцию.
+
+GameStagesExecutor
+Класс остается
+
+GameController
+Класс остается
+
+UserMoveController
+Класс остается
+
+UserInfo
+Класс остается
+
+ScoreKeeper
+Класс остается
+
+BonusCalculator
+Класс остается
+
+Bonus
+Класс удален, т.к содержит только запросы без команд, можно заменить простой мапой.
+
+FieldAction
+Класс удален, т.к инкапсулирует функцию.
+
+DefaultMoveFieldAction
+Класс удален, т.к инкапсулирует функцию и продолжает наследование.
+
+BonusFieldAction
+Класс удален, т.к инкапсулирует функцию и продолжает наследование.
+
