@@ -4,3 +4,109 @@
 2) Принято решение пока не добавлять UserInfo, т.к можно держать отдельно BonusKeeper и ScoreKeeper
 3) BonusCalculator переименован в BonusKeeper
 4) Добавлен класс FieldActionVisitor, реализующий паттерн visitor
+
+Результирующие атд:
+
+public abstract class GameController<T, E> {
+
+    //Команды
+
+    //предусловие: не должно быть запущенных игр
+    //постусловие: будет подготовлено начало игры
+    public abstract void startGame();
+
+    //предусловие: должна быть запущена игра
+    //постусловие: состояние игры сброшено до момента старта игры
+    public abstract void restartGame();
+
+    //предусловие: должна быть запущена игра
+    //постусловие: будут подсчитаны итоговые очки, игра прекращается
+    public abstract void endGame();
+
+    // Запросы
+
+    //предусловие: игра должна быть начата или перезапущена
+    public abstract E getFirstMove();
+
+    //предусловие: игра должна быть закончена
+    public abstract T gameResult();
+}
+
+public abstract class UserMoveController<T, E> {
+
+    //Команды
+
+    //постусловие: будет выполнена перестановка ячеек и подсчитаны очки за ход
+    public abstract void swapFieldCells();
+
+    //постусловие: будет изменено игровое поле с использованием действия из бонуса и подсчитаны очки за ход
+    public abstract void useBonusMove();
+
+    // Запросы
+
+    public abstract T getField();
+    public abstract E getUserStatus();
+
+    public abstract int getSwapFieldCellsResult();
+    public abstract int getUseBonusMove();
+}
+
+public abstract class FieldKeeper {
+
+    //Команды
+
+    //предусловие: поле пустое
+    //постусловие: поле сгенерировано
+    public abstract void generateField();
+
+    //предусловие: поле не пустое
+    //постусловие: поле удалено
+    public abstract void clear();
+
+    //предусловие: поле должно быть сгенерировано
+    //постусловие: поле изменено
+    public abstract void applyChanges(FieldActionVisitor visitor);
+
+    //Запрос
+
+    //предусловие: поле должно быть сгенерировано
+    public abstract String[][] getField();
+}
+
+public abstract class ScoreKeeper {
+
+    //Команды
+
+    //постусловие: добавлены очки за ход
+    public abstract void calculateScore(int cellDeletedByPlayerTurn);
+
+    //постусловие: обнулены очки
+    public abstract void clearScore();
+
+
+    //Запрос
+    public abstract int getScore();
+}
+
+public abstract class BonusKeeper<E> {
+    public static final int BONUS_RECEIVED = 0;
+    public static final int BONUS_NOT_RECEIVED = 1;
+
+    //Команды
+
+    //постусловие: возможно добавлен бонус
+    public abstract void calculateBonus(int scoreByPlayerTurn);
+
+    //постусловие: обнулены бонусы
+    public abstract void cleanBonus();
+
+    //Запросы
+
+    public abstract List<E> getAllBonuses();
+    public abstract int getCalculatedBonusResult();
+}
+
+public abstract class FieldActionVisitor {
+
+    public abstract void apply(String[][] field);
+}
