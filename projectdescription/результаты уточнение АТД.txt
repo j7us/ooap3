@@ -1,0 +1,6 @@
+После выполнение пунктов 4 и 5 были внесены изменения:
+
+1) Принято решение не добавлять класс GameStagesExecutor, команды и запросы дублировали GameController
+2) Принято решение пока не добавлять UserInfo, т.к можно держать отдельно BonusKeeper и ScoreKeeper
+3) BonusCalculator переименован в BonusKeeper
+4) Добавлен класс FieldActionVisitor, реализующий паттерн visitor
