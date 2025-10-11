@@ -17,5 +17,5 @@ public abstract class BonusKeeper<E> {
     //Запросы
 
     public abstract List<E> getAllBonuses();
-    public abstract int getCalculatedBonusResult();
+    public abstract E getBonus(String name);
 }

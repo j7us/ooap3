@@ -1,6 +1,6 @@
 package org.example.atd;
 
-public abstract class ScoreKeeper {
+public abstract class ScoreKeeper<T> {
 
     //Команды
 

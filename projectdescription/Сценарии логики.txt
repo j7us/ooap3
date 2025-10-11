@@ -1,0 +1,36 @@
+Сценарии:
+1) Старт игры
+Отправка пользователем команды в терминале /start --> GameController
+GameController --> FieldKeeper Создание поля
+GameController возвращает пользователю первое поле
+
+2) Рестарт
+Отправка пользователем команды в терминале /restart --> GameController
+GameController --> FieldKeeper Пересоздание поля
+GameController --> ScoreKeeper Обнуление очков
+GameController --> BonusKeeper Обнуление бонусов
+GameController возвращает пользователю первое поле
+
+3) Концовка
+Отправка пользователем команды в терминале /end --> GameController
+GameController --> ScoreKeeper Получение очков
+GameController --> BonusKeeper Получение бонусов
+GameController возвращает пользователю данные
+
+4) Ход игрока
+Отправка пользователем /move и координаты --> UserMoveController
+UserMoveController --> FieldKeeper Поменять ячейки местами
+UserMoveController --> ScoreKeeper Подсчет очков на основе переставленных ячеек
+UserMoveController --> BonusKeeper Подсчет бонусов на основе переставленных ячеек
+UserMoveController возвращает пользователю новое поле
+
+5) Просмотр доступных игроку бонусов
+Отправка пользователем /bonus и координаты --> UserMoveController
+UserMoveController --> BonusKeeper Получение бонусов игрока
+UserMoveController возвращает пользователю бонусы
+
+6) Использование Бонуса
+Отправка пользователем /use-bonus и имя бонуса --> UserMoveController
+UserMoveController --> BonusKeeper Получение бонуса по имени
+UserMoveController --> FieldKeeper Использование бонуса на поле
+UserMoveController возвращает новое поле

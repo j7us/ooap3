@@ -4,15 +4,9 @@ public abstract class FieldKeeper {
 
     //Команды
 
-    //предусловие: поле пустое
-    //постусловие: поле сгенерировано
-    public abstract void generateField();
+    //постусловие: поле сделано заново
+    public abstract void recreate();
 
-    //предусловие: поле не пустое
-    //постусловие: поле удалено
-    public abstract void clear();
-
-    //предусловие: поле должно быть сгенерировано
     //постусловие: поле изменено
     public abstract void applyChanges(FieldActionVisitor visitor);
 
