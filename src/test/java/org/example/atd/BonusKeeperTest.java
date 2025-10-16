@@ -1,5 +1,7 @@
 package org.example.atd;
 
+import org.example.realization.dto.Bonus;
+import org.example.realization.service.BonusKeeperImpl;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -10,33 +12,33 @@ public class BonusKeeperTest {
 
     @Test
     void newBonusTest() {
-        BonusKeeper<Integer> bonusKeeper = new BonusKeeper();
+        BonusKeeper<Bonus> bonusKeeper = new BonusKeeperImpl();
 
-        List<Integer> allBonuses = bonusKeeper.getAllBonuses();
+        List<Bonus> allBonuses = bonusKeeper.getAllBonuses();
 
         assertThat(allBonuses).isEmpty();
     }
 
     @Test
     void addBonusTest() {
-        BonusKeeper<Integer> bonusKeeper = new BonusKeeper();
+        BonusKeeper<Bonus> bonusKeeper = new BonusKeeperImpl();
 
         bonusKeeper.calculateBonus(123);
 
-        List<Integer> updatedBonuses = bonusKeeper.getAllBonuses();
+        List<Bonus> updatedBonuses = bonusKeeper.getAllBonuses();
 
         assertThat(updatedBonuses).isNotEmpty();
     }
 
     @Test
-    void addBonusTest() {
-        BonusKeeper<Integer> bonusKeeper = new BonusKeeper();
+    void cleanBonusTest() {
+        BonusKeeper<Bonus> bonusKeeper = new BonusKeeperImpl();
 
         bonusKeeper.calculateBonus(123);
 
         bonusKeeper.cleanBonus();
 
-        List<Integer> cleanedBonuses = bonusKeeper.getAllBonuses();
+        List<Bonus> cleanedBonuses = bonusKeeper.getAllBonuses();
 
         assertThat(cleanedBonuses).isEmpty();
     }

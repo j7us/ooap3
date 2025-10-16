@@ -12,5 +12,7 @@ public abstract class ScoreKeeper<T> {
 
 
     //Запрос
-    public abstract int getScore();
+
+    public abstract T getScore();
+    public abstract T getLastMoveScore();
 }

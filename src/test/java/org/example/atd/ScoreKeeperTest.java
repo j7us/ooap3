@@ -1,5 +1,6 @@
 package org.example.atd;
 
+import org.example.realization.service.ScoreKeeperImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,16 +9,16 @@ public class ScoreKeeperTest {
 
     @Test
     void newScoreTest() {
-        ScoreKeeper<Integer> scoreKeeper = new ScoreKeeper();
+        ScoreKeeper<Integer> scoreKeeper = new ScoreKeeperImpl();
 
-        int score = score.getScore();
+        Integer score = scoreKeeper.getScore();
 
         assertThat(score).isEqualTo(0);
     }
 
     @Test
     void addScoreTest() {
-        ScoreKeeper<Integer> scoreKeeper = new ScoreKeeper();
+        ScoreKeeper<Integer> scoreKeeper = new ScoreKeeperImpl();
 
         scoreKeeper.calculateScore(12);
 
@@ -28,7 +29,7 @@ public class ScoreKeeperTest {
 
     @Test
     void cleanScoreTest() {
-        ScoreKeeper<Integer> scoreKeeper = new ScoreKeeper();
+        ScoreKeeper<Integer> scoreKeeper = new ScoreKeeperImpl();
 
         scoreKeeper.calculateScore(12);
 

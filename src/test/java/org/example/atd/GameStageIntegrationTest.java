@@ -22,9 +22,7 @@ public class GameStageIntegrationTest {
 
     @Test
     void gameStartTest() {
-        gameController.startGame();
-
-        Object firstMove = gameController.getFirstMove();
+        String[][] firstMove = (String[][])gameController.startGame();
 
         assertThat(firstMove).isNotNull();
     }
@@ -32,9 +30,7 @@ public class GameStageIntegrationTest {
     @Test
     void gameRestartTest() {
         gameController.startGame();
-        gameController.restartGame();
-
-        Object firstMove = gameController.getFirstMove();
+        String[][] firstMove = (String[][])gameController.restartGame();
 
         assertThat(firstMove).isNotNull();
     }
@@ -42,9 +38,7 @@ public class GameStageIntegrationTest {
     @Test
     void gameEndTest() {
         gameController.startGame();
-        gameController.endGame();
-
-        Object object = gameController.gameResult();
+        String object = (String)gameController.endGame();
 
         assertThat(object).isNotNull();
     }

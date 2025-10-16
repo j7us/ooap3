@@ -1,5 +1,7 @@
 package org.example.atd;
 
+import org.example.realization.service.FieldKeeperImpl;
+import org.example.realization.visitor.BonusMoveFieldActionVisitor;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,9 +10,9 @@ public class FieldKeeperTest {
 
     @Test
     void fieldCreateTest() {
-        FieldKeeper fieldKeeper = new FieldKeeper();
+        FieldKeeper<String[][]> fieldKeeper = new FieldKeeperImpl();
 
-        fieldKeeper.generateField();
+        fieldKeeper.generateNewField();
 
         String[][] field = fieldKeeper.getField();
 
@@ -19,25 +21,27 @@ public class FieldKeeperTest {
 
     @Test
     void getFieldTest() {
-        FieldKeeper fieldKeeper = new FieldKeeper();
+        FieldKeeper<String[][]> fieldKeeper = new FieldKeeperImpl();
 
-        fieldKeeper.generateField();
-        fieldKeeper.clear();
-
+        fieldKeeper.generateNewField();
         String[][] field = fieldKeeper.getField();
 
-        assertThat(field).isNull();
+        fieldKeeper.generateNewField();
+
+        String[][] newField = fieldKeeper.getField();
+
+        assertThat(field).isNotEqualTo(newField);
     }
 
     @Test
     void applyChangeTest() {
-        FieldKeeper fieldKeeper = new FieldKeeper();
+        FieldKeeper<String[][]> fieldKeeper = new FieldKeeperImpl();
 
-        fieldKeeper.generateField();
+        fieldKeeper.generateNewField();
 
         String[][] createdField = fieldKeeper.getField();
 
-        fieldKeeper.applyChanges(new FieldActionVisitor());
+        fieldKeeper.applyChanges(new BonusMoveFieldActionVisitor("a"));
 
         String[][] updatedField = fieldKeeper.getField();
 

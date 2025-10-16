@@ -1,11 +1,11 @@
 package org.example.atd;
 
-public abstract class FieldKeeper {
+public abstract class FieldKeeper<T> {
 
     //Команды
 
-    //постусловие: поле сделано заново
-    public abstract void recreate();
+    //постусловие: поле создано
+    public abstract void generateNewField();
 
     //постусловие: поле изменено
     public abstract void applyChanges(FieldActionVisitor visitor);
@@ -13,5 +13,8 @@ public abstract class FieldKeeper {
     //Запрос
 
     //предусловие: поле должно быть сгенерировано
-    public abstract String[][] getField();
+    public abstract T getField();
+
+    //предусловие: поле должно быть сгенерировано
+    public abstract int cellDeletedByLastMove();
 }

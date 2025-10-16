@@ -9,34 +9,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class UserMoveIntegrationTest {
     @Autowired
-    GameController gameController;
+    GameController<String[][], String> gameController;
 
     @Autowired
-    UserMoveController userMoveController;
+    UserMoveController<String[][], String> userMoveController;
 
     @Test
     void userMoveTest() {
-        gameController.startGame();
+        String[][] firstMove = (String[][])gameController.startGame();
 
-        Object firstMove = gameController.getFirstMove();
-
-        userMoveController.swapFieldCells(1, 1, 2, 1);
-
-        Object field = userMoveController.getField();
+        String[][] field = (String[][])userMoveController.swapFieldCells(1, 1, 2, 1);
 
         assertThat(firstMove).isNotEqualTo(field);
     }
 
     @Test
     void userMoveResulTest() {
-        gameController.startGame();
-
-        gameController.getFirstMove();
+        String[][] firstMove = (String[][])gameController.startGame();
 
         userMoveController.swapFieldCells(1, 1, 2, 1);
 
-        Object userStatus = userMoveController.getUserStatus();
+        String userBonus = userMoveController.getUserBonus();
 
-        assertThat(userStatus).isNotNull();
+        assertThat(userBonus).isNotEmpty();
     }
 }
