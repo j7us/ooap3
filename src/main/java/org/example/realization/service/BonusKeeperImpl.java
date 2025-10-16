@@ -17,7 +17,7 @@ public class BonusKeeperImpl extends BonusKeeper<Bonus> {
 
     @Override
     public void calculateBonus(int scoreByPlayerTurn) {
-        if (scoreByPlayerTurn < 10) {
+        if (scoreByPlayerTurn < 3) {
             return;
         }
 

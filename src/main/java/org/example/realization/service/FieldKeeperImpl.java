@@ -84,7 +84,7 @@ public class FieldKeeperImpl extends FieldKeeper<String[][]> {
 
     @Override
     public String[][] getField() {
-        return new String[0][];
+        return field;
     }
 
     @Override

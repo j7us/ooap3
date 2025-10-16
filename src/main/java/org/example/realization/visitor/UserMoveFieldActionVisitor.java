@@ -56,7 +56,7 @@ public class UserMoveFieldActionVisitor extends FieldActionVisitor {
     }
 
     private void cleanInColumn(String[][] field, int column, int rowFrom, int rowTo) {
-        for (int i = rowFrom; i < rowTo; i++) {
+        for (int i = rowFrom; i <= rowTo; i++) {
             field[i][column] = null;
         }
     }
